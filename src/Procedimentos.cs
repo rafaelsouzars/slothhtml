@@ -17,7 +17,7 @@ namespace slothhtml.src
 
             try
             {
-                Console.WriteLine($"Variável projeto: {projeto}");
+                
                 if (projeto == null)
                 {
                     projeto = "meu-projeto";
