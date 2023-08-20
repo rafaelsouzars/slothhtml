@@ -14,8 +14,8 @@ Nota: A ideia final é emular o funcionamento do `composer PHP`, gerenciando via
 
 Inicia uma pasta com arquivo _index.html_ e o diretorio de recursos _assets_ com seus respectivos subdiretórios: _css_, _font_, _img_ e _js_.
 
->slothhtml init\n
->slothhtml init 'name-project'
+>**slothhtml init** _ou_
+>**slothhtml init 'name-project'**
 
 ![Console](https://images2.imgbox.com/98/a9/Odr3gmig_o.png)
 ![Diretórios de projetos](https://images2.imgbox.com/fc/97/5Fp8n97K_o.png)
