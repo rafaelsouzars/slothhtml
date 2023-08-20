@@ -1,4 +1,5 @@
 ﻿using System;
+using slothhtml.src;
 
 namespace slothhtml
 {
@@ -6,8 +7,22 @@ namespace slothhtml
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("SLOHHTML 1.0");
-            Console.WriteLine("Inicializador e gerenciador de projetos HTML5.");            
+                       
+
+            if (args.Length>0)
+            {
+                Interpretador.Comando(args);
+            }
+            else
+            {
+                Tela.Sobre();
+                Interpretador.ListaComandos();
+            }
+
+
+
+
+
         }
     }
 }

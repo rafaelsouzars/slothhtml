@@ -3,6 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Rafael Souza</Authors>
+    <Description>O SlothHtml é uma ferramenta CLI para inicialização de projetos HTML5.</Description>
+    <PackageProjectUrl>https://github.com/rafaelsouzars/slothhtml.git</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>
