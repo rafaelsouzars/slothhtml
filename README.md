@@ -17,6 +17,8 @@ Inicia uma pasta com arquivo _index.html_ e o diretorio de recursos _assets_ com
 >**slothhtml init** _ou_
 >**slothhtml init 'name-project'**
 
+Instalação: Incluir o diretório do executável na variável de sistema _path_.
+
 ![Console](https://images2.imgbox.com/98/a9/Odr3gmig_o.png)
 ![Diretórios de projetos](https://images2.imgbox.com/fc/97/5Fp8n97K_o.png)
 ![Arquivos e estruturas de pastas](https://images2.imgbox.com/78/71/XpPQN7PC_o.png)
