@@ -27,7 +27,7 @@ Mostra a lista de comando do aplicativo.
 
 **Comando:** _search_
 
-Procura por uma biblioteca no repositório online [cdnjs](https://www.cdnjs.com).
+Procura por uma biblioteca no [cdnjs](https://www.cdnjs.com).
 
 >**slothhtml search 'nome-da-lib'**
 
