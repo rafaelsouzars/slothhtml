@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
 
 namespace slothhtml.src
 {
@@ -88,10 +89,11 @@ namespace slothhtml.src
                         Console.WriteLine(response.Headers.Location);
 
                         //Pegando os dados do Rest e armazenando na variável usuários
-                        var usuarios = await response.Content.ReadAsStringAsync();
-
+                        var libs = await response.Content.ReadAsStringAsync();
+                        var getResult = JObject.Parse(libs);
                         //preenchendo a lista com os dados retornados da variável
-
+                        Console.WriteLine(getResult["results"][0]);
+                        //Console.ReadKey();
                     }
                     else
                     {
@@ -108,6 +110,11 @@ namespace slothhtml.src
             
             
                         
+            
+        }
+
+        public static void Require(string lib)
+        {
             
         }
 
