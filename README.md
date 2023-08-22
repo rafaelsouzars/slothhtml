@@ -5,7 +5,7 @@ Inicializador e gerenciador de projetos em HTML5.
 ![Version](https://img.shields.io/badge/version-1.0-green) ![Status](https://img.shields.io/badge/status-development-yellow)
 
 
-**Introdução**
+### Introdução
 
 O SlothHtml é uma ferramenta CLI para inicialização de projetos HTML5. Tem como objetivo facilitar a criação das estruturas de pastas e arquivos para pequenos projetos de estudo em HTML5.
 Nota: A ideia final é emular o funcionamento do `composer PHP`, gerenciando via CLI as bibliotecas do projeto.
