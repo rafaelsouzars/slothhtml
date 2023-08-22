@@ -41,10 +41,10 @@ namespace slothhtml.src
                 sw.WriteLine("<!DOCTYPE html>");
                 sw.WriteLine("<html>");
                 sw.WriteLine("<head>");
-                sw.WriteLine("\t<meta charset=\"utf - 8\">");
-                sw.WriteLine("\t<meta http-equiv=\"X - UA - Compatible\" content=\"ie = edger\">");
-                sw.WriteLine("\t<meta http-equiv=\"Content - type\" content=\"text / html; charset = UTF - 8\">");
-                sw.WriteLine("\t<link href=\"assets / css / style.css\" rel=\"stylesheet\" type=\"text / css\">");
+                sw.WriteLine("\t<meta charset=\"utf-8\">");
+                sw.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
+                sw.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
+                sw.WriteLine("\t<link href=\"assets/css/style.css\" rel=\"stylesheet\"type=\"text/css\">");
                 sw.WriteLine($"\t<title>{projeto}</title>");
                 sw.WriteLine("</head>");
                 sw.WriteLine("<body>");
