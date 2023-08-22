@@ -29,7 +29,7 @@ namespace slothhtml.src
 
             _comandos.Add(new Comando("search", "Pesquisa por bibliotecas no repositorio cdnjs.", async () => {
 
-                Procedimentos.LibsSearch(_comandos[1].Param).Wait();
+                Procedimentos.LibsSearch(_comandos[2].Param).Wait();
                 Console.ReadKey();
 
             }));
