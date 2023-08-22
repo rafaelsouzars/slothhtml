@@ -17,17 +17,20 @@ Inicia uma pasta com arquivo _index.html_ e o diretorio de recursos _assets_ com
 >**slothhtml init** _ou_
 >**slothhtml init 'name-project'**
 
+
 **Comando:** _help_
 
 Mostra a lista de comando do aplicativo.
 
 >**slothhtml help**
 
+
 **Comando:** _search_
 
 Procura por uma biblioteca no repositório online [cdnjs](https://www.cdnjs.com).
 
->**slothhtml help**
+>**slothhtml search 'nome-da-lib'**
+
 
 Instalação: Incluir o diretório do executável na variável de sistema _path_.
 
