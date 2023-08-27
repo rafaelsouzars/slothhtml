@@ -8,7 +8,7 @@ namespace slothhtml
         static void Main(string[] args)
         {
                        
-
+            //Se o tamanho do array de argumentos for maior que 0
             if (args.Length>0)
             {
                 Interpretador.Comando(args);

@@ -35,7 +35,7 @@ namespace slothhtml.src
 
             _comandos.Add(new Comando("require", "Requisita uma biblioteca do repositório cdnjs.com.", () => {
 
-                Procedimentos.Require(_comandos[3].Param);
+                
 
             }));
 
