@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 namespace slothhtml.src
 {
@@ -75,25 +75,42 @@ namespace slothhtml.src
         {
             try
             {
+                //Inicia o cliente http
                 using (var client = new HttpClient())
                 {
-
+                    //Configurações base do cliente
                     client.BaseAddress = new System.Uri("https://api.cdnjs.com/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = await client.GetAsync($"libraries?search={query}");
 
+                    //Caso a resposta da requisição GET assíncrona retorna o código 200
                     if (response.IsSuccessStatusCode)
                     {
                         //pegando o cabeçalho
                         Console.WriteLine(response.Headers.Location);
 
-                        //Pegando os dados do Rest e armazenando na variável usuários
-                        var libs = await response.Content.ReadAsStringAsync();
-                        var getResult = JObject.Parse(libs);
-                        //preenchendo a lista com os dados retornados da variável
-                        Console.WriteLine(getResult["results"][0]);
-                        //Console.ReadKey();
+                        //Pegando os dados da resposta e armazenando na variável 'results'
+                        var results = await response.Content.ReadAsStringAsync();
+                        
+                        //Inicia a lista de resultados
+                        ListaResultados listaResultados = new ListaResultados();
+
+                        //Alimenta a lista de resultados com o Json
+                        listaResultados = JsonSerializer.Deserialize<ListaResultados>(results);
+
+                        //Console.WriteLine(listaResultados.results);
+
+                        foreach (Result libs in listaResultados.results) {
+
+                            //Seleciona apenas a biblioteca que corresponde com a consulta
+                            if (libs.name == query) {
+                                Console.WriteLine($"Biblioteca: {libs.name} , Versão: {libs.latest.Split("/")[6]}");
+                                Console.WriteLine($"URI: {libs.latest}");
+                                Console.Write("Deseja incluir no projeto? [S/N] :");
+                                Console.ReadKey();
+                            }
+                        }
                     }
                     else
                     {
@@ -111,12 +128,7 @@ namespace slothhtml.src
             
                         
             
-        }
-
-        public static void Require(string lib)
-        {
-            
-        }
+        }       
 
 
 
