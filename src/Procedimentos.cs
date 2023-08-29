@@ -108,7 +108,13 @@ namespace slothhtml.src
                                 Console.WriteLine($"Biblioteca: {libs.name} , Versão: {libs.latest.Split("/")[6]}");
                                 Console.WriteLine($"URI: {libs.latest}");
                                 Console.Write("Deseja incluir no projeto? [S/N] :");
-                                Console.ReadKey();
+                                ConsoleKeyInfo tecla = Console.ReadKey();
+                                //Console.WriteLine(tecla.Key);
+                                if (tecla.Key.ToString().Equals("s") || tecla.Key.ToString().Equals("S"))
+                                {
+                                    Arquivos.InserirBiblioteca("index",libs.latest);
+                                }
+                                
                             }
                         }
                     }
@@ -128,8 +134,12 @@ namespace slothhtml.src
             
                         
             
-        }       
+        }
 
+        public static void InsertLib()
+        {
+            //Arquivos.InserirBiblioteca("index","lib");
+        }
 
 
     }
