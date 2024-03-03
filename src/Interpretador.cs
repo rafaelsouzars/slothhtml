@@ -9,8 +9,7 @@ namespace slothhtml.src
     class Interpretador
     {
 
-        private static ListaComandos listaComandos = new ListaComandos();         
-        
+        private static ListaComandos listaComandos = new ListaComandos();          
         
         
         public static void Comando(string[] args) {                       

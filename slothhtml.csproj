@@ -8,4 +8,8 @@
     <PackageProjectUrl>https://github.com/rafaelsouzars/slothhtml.git</PackageProjectUrl>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.52" />
+  </ItemGroup>
+
 </Project>
