@@ -33,8 +33,8 @@ namespace slothhtml.src
 
                 //Cria os arquivos do projeto em seus respectivos diretorios
                 //File.Create($"{currentDir}\\{projeto}\\index.html");                
-                File.Create($"{currentDir}\\{projeto}\\assets\\js\\script.js");
-                File.Create($"{currentDir}\\{projeto}\\assets\\css\\style.css");
+                File.Create($"{currentDir}\\{projeto}\\assets\\js\\scripts.js");
+                File.Create($"{currentDir}\\{projeto}\\assets\\css\\styles.css");
 
                 //Prepara o arquivo para escrita
                 StreamWriter sw = new StreamWriter($"{currentDir}\\{projeto}\\index.html");
@@ -45,13 +45,13 @@ namespace slothhtml.src
                 sw.WriteLine("\t<meta charset=\"utf-8\">");
                 sw.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
                 sw.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
-                sw.WriteLine("\t<link href=\"assets/css/style.css\" rel=\"stylesheet\"type=\"text/css\">");
+                sw.WriteLine("\t<link href=\"assets/css/styles.css\" rel=\"stylesheet\"type=\"text/css\">");
                 sw.WriteLine($"\t<title>{projeto}</title>");
                 sw.WriteLine("</head>");
                 sw.WriteLine("<body>");
                 sw.WriteLine("<h1>SlothHtml 1.0 :)</h1>");
                 sw.WriteLine("</body>");
-                sw.WriteLine("\t<script src=\"assets/js/script.js\"></script>");
+                sw.WriteLine("\t<script src=\"assets/js/scripts.js\"></script>");
                 sw.WriteLine("</html>");  
 
                 //Fecha o arquivo
