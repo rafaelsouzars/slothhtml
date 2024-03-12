@@ -40,16 +40,17 @@ namespace slothhtml.src
                 StreamWriter sw = new StreamWriter($"{currentDir}\\{projeto}\\index.html");
 
                 sw.WriteLine("<!DOCTYPE html>");
-                sw.WriteLine("<html>");
+                sw.WriteLine("<html lang=\"pt-br\">");
                 sw.WriteLine("<head>");
                 sw.WriteLine("\t<meta charset=\"utf-8\">");
+                sw.WriteLine("\t<meta name=\"viewport\" content=\"width=width-device, initial-scale=1.0\">");
                 sw.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
                 sw.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
                 sw.WriteLine("\t<link href=\"assets/css/styles.css\" rel=\"stylesheet\"type=\"text/css\">");
                 sw.WriteLine($"\t<title>{projeto}</title>");
                 sw.WriteLine("</head>");
                 sw.WriteLine("<body>");
-                sw.WriteLine("<h1>SlothHtml 1.0 :)</h1>");
+                sw.WriteLine("<h1>Sloth HTML 1.0</h1>");
                 sw.WriteLine("</body>");
                 sw.WriteLine("\t<script src=\"assets/js/scripts.js\"></script>");
                 sw.WriteLine("</html>");  
