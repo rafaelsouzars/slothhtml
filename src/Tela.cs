@@ -14,10 +14,15 @@ namespace slothhtml.src
 
         public static void Sobre() {
 
-            Console.WriteLine("--------------------------------------------------------------");
-            Console.WriteLine("SlothHTML 1.0");
-            Console.WriteLine("Inicializador e gerenciador de projetos HTML5.");
-            Console.WriteLine("--------------------------------------------------------------\n\n");
+            LetraConsole.IniciarAlfabeto();
+            LetraConsole.DrawString("Sloth html");
+
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("SlothHTML v0.1");
+            Console.WriteLine("Gerenciador de projetos HTML5.");
+            Console.WriteLine("Dev: https://github.com/rafaelsouzars");
+            Console.WriteLine("Repositório: https://github.com/rafaelsouzars/slothhtml");
+            Console.WriteLine("----------------------------------------------------------------------------\n\n");
         }
 
         

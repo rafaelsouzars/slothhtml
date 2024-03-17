@@ -27,13 +27,13 @@ namespace slothhtml.src
 
             }));
 
-            _comandos.Add(new Comando("search", "Pesquisa por bibliotecas no repositório cdnjs.", () => {
+            _comandos.Add(new Comando("search", "Pesquisar bibliotecas no cdnjs.", () => {
 
                 Procedimentos.LibsSearch(_comandos[2].Param).Wait();                
 
             }));
 
-            _comandos.Add(new Comando("libs", "Requisita uma biblioteca do repositório cdnjs.com.", () => {
+            _comandos.Add(new Comando("libs", "Requisitar biblioteca do cdnjs.", () => {
 
                 Procedimentos.InsertLib();
 
