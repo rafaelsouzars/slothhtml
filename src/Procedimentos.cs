@@ -43,7 +43,7 @@ namespace slothhtml.src
                 sw.WriteLine("<html lang=\"pt-br\">");
                 sw.WriteLine("<head>");
                 sw.WriteLine("\t<meta charset=\"utf-8\">");
-                sw.WriteLine("\t<meta name=\"viewport\" content=\"width=width-device, initial-scale=1.0\">");
+                sw.WriteLine("\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
                 sw.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
                 sw.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
                 sw.WriteLine("\t<link href=\"assets/css/styles.css\" rel=\"stylesheet\"type=\"text/css\">");
