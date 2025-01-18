@@ -15,15 +15,20 @@ namespace slothhtml.src
         public static void Comando(string[] args) {                       
 
             listaComandos.Comandos.ForEach(cmd => {
-                
+
                 if (args[0] == cmd.GetNome)
                 {
-                    if(args.Length>1)
+                    if (args.Length > 1)
                     {
                         cmd.Param = args[1];
                         //Console.WriteLine($"Numero de Arqgumentos: {args.Length}, Segundo Argumento: {cmd.Param}");
                     }
-                    cmd.Executar();                    
+                    cmd.Executar();
+                }                
+                else
+                {
+                    Console.WriteLine($"{args[0]} - Comando não encontrado!!!");
+                    throw new Exception($"{args[0]} - Comando não encontrado!!!");                    
                 }
                 
                 
