@@ -9,7 +9,8 @@ namespace slothhtml.src
     class Interpretador
     {
 
-        private static ListaComandos listaComandos = new ListaComandos();          
+        private static ListaComandos listaComandos = new ListaComandos();
+        
         
         
         public static void Comando(string[] args) {                       
@@ -18,6 +19,7 @@ namespace slothhtml.src
 
                 if (args[0] == cmd.GetNome)
                 {
+                    
                     if (args.Length > 1)
                     {
                         cmd.Param = args[1];
@@ -25,14 +27,9 @@ namespace slothhtml.src
                     }
                     cmd.Executar();
                 }                
-                else
-                {
-                    Console.WriteLine($"{args[0]} - Comando não encontrado!!!");
-                    throw new Exception($"{args[0]} - Comando não encontrado!!!");                    
-                }
-                
                 
             });
+            
             
         }
 

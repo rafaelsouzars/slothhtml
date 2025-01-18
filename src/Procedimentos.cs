@@ -13,52 +13,34 @@ namespace slothhtml.src
     class Procedimentos
     {
         
-        public static void Init(string projeto)
+        public static void Init(string projectName)
         {            
 
             try
             {
-                
-                if (projeto == null)
+
+                string projectDirectory;
+
+                if (projectName == null)
                 {
-                    projeto = "meu-projeto";
+                    projectDirectory = $"{Directory.GetCurrentDirectory()}";
+                    projectName = "meu-projeto";
+                }
+                else
+                {
+                    projectDirectory = $"{Directory.GetCurrentDirectory()}\\{projectName}";
                 }
 
-                //Cria os diretorios do projeto na pasta corrente
-                string currentDir = Directory.GetCurrentDirectory();
-                Directory.CreateDirectory($"{currentDir}\\{projeto}\\assets\\js");
-                Directory.CreateDirectory($"{currentDir}\\{projeto}\\assets\\css");
-                Directory.CreateDirectory($"{currentDir}\\{projeto}\\assets\\font");
-                Directory.CreateDirectory($"{currentDir}\\{projeto}\\assets\\img");
+                //Cria os diretorios do projeto na pasta corrente                
+                Procedimentos.makeDirectorys(projectDirectory);
 
-                //Cria os arquivos do projeto em seus respectivos diretorios
-                //File.Create($"{currentDir}\\{projeto}\\index.html");                
-                File.Create($"{currentDir}\\{projeto}\\assets\\js\\scripts.js");
-                File.Create($"{currentDir}\\{projeto}\\assets\\css\\styles.css");
+                //Cria os arquivos do projeto em seus respectivos diretorios                               
+                Procedimentos.makeFiles(projectDirectory);
 
                 //Prepara o arquivo para escrita
-                StreamWriter sw = new StreamWriter($"{currentDir}\\{projeto}\\index.html");
+                Procedimentos.makeIndexFile(projectDirectory, projectName);
 
-                sw.WriteLine("<!DOCTYPE html>");
-                sw.WriteLine("<html lang=\"pt-br\">");
-                sw.WriteLine("<head>");
-                sw.WriteLine("\t<meta charset=\"utf-8\">");
-                sw.WriteLine("\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                sw.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
-                sw.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
-                sw.WriteLine("\t<link href=\"assets/css/styles.css\" rel=\"stylesheet\"type=\"text/css\">");
-                sw.WriteLine($"\t<title>{projeto}</title>");
-                sw.WriteLine("</head>");
-                sw.WriteLine("<body>");
-                sw.WriteLine("<h1>Sloth HTML 1.0</h1>");
-                sw.WriteLine("</body>");
-                sw.WriteLine("\t<script src=\"assets/js/scripts.js\"></script>");
-                sw.WriteLine("</html>");  
-
-                //Fecha o arquivo
-                sw.Close();
-
-                Console.WriteLine($"O projeto \'{projeto}\' foi executado com sucesso em {Directory.GetCurrentDirectory()}");
+                Console.WriteLine($"O projeto \'{projectName}\' foi criado com sucesso em {projectDirectory}");
             }
             catch (Exception e)
             {
@@ -66,7 +48,7 @@ namespace slothhtml.src
             }
             finally
             {
-                Console.WriteLine("Fim.");
+                Console.WriteLine("Seu projeto foi criado com sucesso. Mãos a obra, DEV.");
             }
 
             
@@ -140,6 +122,52 @@ namespace slothhtml.src
         public static void InsertLib()
         {
             //Arquivos.InserirBiblioteca("index","lib");
+        }
+
+        private static void makeDirectorys(string directory) 
+        {
+            Console.WriteLine($"Create: {directory}\\assets\\js", Directory.CreateDirectory($"{directory}\\assets\\js"));
+            Console.WriteLine($"Create: {directory}\\assets\\css", Directory.CreateDirectory($"{directory}\\assets\\css"));
+            Console.WriteLine($"Create: {directory}\\assets\\font", Directory.CreateDirectory($"{directory}\\assets\\font"));
+            Console.WriteLine($"Create: {directory}\\assets\\img", Directory.CreateDirectory($"{directory}\\assets\\img"));
+        }
+
+        private static void makeFiles(string directory) 
+        {
+            //File.Create($"{currentDir}\\{projeto}\\index.html"); 
+            Console.WriteLine($"Create: {directory}\\assets\\js\\scripts.js", File.Create($"{directory}\\assets\\js\\scripts.js"));
+            Console.WriteLine($"Create: {directory}\\assets\\css\\styles.css", File.Create($"{directory}\\assets\\css\\styles.css"));
+        }
+
+        private static void makeIndexFile(string directory, string projectName)
+        {
+            StreamWriter sw = new StreamWriter($"{directory}\\index.html");
+
+            sw.WriteLine("<!DOCTYPE html>");
+            sw.WriteLine("<html lang=\"pt-br\">");
+            sw.WriteLine("<head>");
+            sw.WriteLine("\t<meta charset=\"utf-8\">");
+            sw.WriteLine("\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+            sw.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
+            sw.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
+            sw.WriteLine("\t<link href=\"assets/css/styles.css\" rel=\"stylesheet\"type=\"text/css\">");
+            sw.WriteLine($"\t<title>{projectName}</title>");
+            sw.WriteLine("</head>");
+            sw.WriteLine("<body>");
+            sw.WriteLine("<h1>Sloth HTML 1.0</h1>");
+            /*
+             
+                Desenvolver um script para iniciar projetos pré definidos como: login pages, dashboards, formulários e etc.
+             
+            */
+            sw.WriteLine("</body>");
+            sw.WriteLine("\t<script src=\"assets/js/scripts.js\"></script>");
+            sw.WriteLine("</html>");
+
+            //Fecha o arquivo
+            sw.Close();
+
+            Console.WriteLine($"Create: {directory}\\index.html");
         }
 
 
