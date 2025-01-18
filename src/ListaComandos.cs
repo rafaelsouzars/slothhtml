@@ -19,7 +19,7 @@ namespace slothhtml.src
 
             }));
 
-            _comandos.Add(new Comando("init", "Cria um projeto no SlothHtml.", () => {
+            _comandos.Add(new Comando("init", "Este comando inicia um projeto com estrutura de pastas e o arquivo index.html", () => {
 
                 
                 Procedimentos.Init(_comandos[1].Param);               
