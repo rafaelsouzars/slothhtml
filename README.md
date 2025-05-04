@@ -2,7 +2,8 @@
 
 Inicializador de projetos HTML5.
 
-![Version](https://img.shields.io/badge/version-1.0-green) ![Status](https://img.shields.io/badge/status-development-yellow)
+![Version](https://img.shields.io/badge/version-1.0.0-green) ![Status](https://img.shields.io/badge/status-development-yellow) ![GitHub Tag](https://img.shields.io/github/v/tag/rafaelsouzars/slothhtml) ![GitHub Release](https://img.shields.io/github/v/release/rafaelsouzars/slothhtml) ![GitHub top language](https://img.shields.io/github/languages/top/rafaelsouzars/slothhtml?color=green)
+
 
 
 ## Introdução
@@ -12,7 +13,7 @@ Nota: A ideia final é emular o funcionamento do `composer PHP`, gerenciando via
 
 ### **Comando:** _init_
 
-Inicia uma pasta com arquivo _index.html_ e o diretorio de recursos _assets_ com seus respectivos subdiretórios: _css_, _font_, _img_ e _js_.
+Inicia uma pasta com arquivo _index.html_, o diretorio _vendor_ _(para recursos de terceiros)_ e o diretorio de recursos _assets_ com seus respectivos subdiretórios: _css_, _font_, _img_, scss e _js_.
 
 >**slothhtml init** _ou_ **slothhtml init 'name-project'**
 
