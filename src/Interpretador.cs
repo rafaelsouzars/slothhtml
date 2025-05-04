@@ -9,27 +9,12 @@ namespace slothhtml.src
     class Interpretador
     {
 
-        private static ListaComandos listaComandos = new ListaComandos();
+        private static ListaComandos listaComandos = new ListaComandos();        
         
         
-        
-        public static void Comando(string[] args) {                       
+        public static void Comando(string[] args) {           
 
-            listaComandos.Comandos.ForEach(cmd => {
-
-                if (args[0] == cmd.GetNome)
-                {
-                    
-                    if (args.Length > 1)
-                    {
-                        cmd.Param = args[1];
-                        //Console.WriteLine($"Numero de Arqgumentos: {args.Length}, Segundo Argumento: {cmd.Param}");
-                    }
-                    cmd.Executar();
-                }                
-                
-            });
-            
+            Parser.input(args);   
             
         }
 
