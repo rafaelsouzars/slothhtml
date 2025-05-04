@@ -11,7 +11,7 @@ using System.Text.Json;
 namespace slothhtml.src
 {
     class Procedimentos
-    {
+    {       
         
         public static void Init(string projectName)
         {            
@@ -40,7 +40,13 @@ namespace slothhtml.src
                 //Prepara o arquivo para escrita
                 Procedimentos.makeIndexFile(projectDirectory, projectName);
 
+                ConsoleColor currentForengroundColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Green;
+
                 Console.WriteLine($"O projeto \'{projectName}\' foi criado com sucesso em {projectDirectory}");
+
+                Console.ForegroundColor = currentForengroundColor;
+
             }
             catch (Exception e)
             {
@@ -111,12 +117,20 @@ namespace slothhtml.src
             }
             catch (Exception e) 
             {
-                Console.WriteLine("Exception: " + e.Message);
+                errorMessage(e);
             }
             
             
                         
             
+        }
+
+        private static void errorMessage(Exception ex)
+        {
+            ConsoleColor currentForengroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Mensagem de Erro: {ex.Message}", Console.ForegroundColor);
+            Console.ForegroundColor = currentForengroundColor;            
         }
 
         public static void InsertLib()
@@ -126,17 +140,31 @@ namespace slothhtml.src
 
         private static void makeDirectorys(string directory) 
         {
-            Console.WriteLine($"Create: {directory}\\assets\\js", Directory.CreateDirectory($"{directory}\\assets\\js"));
-            Console.WriteLine($"Create: {directory}\\assets\\css", Directory.CreateDirectory($"{directory}\\assets\\css"));
-            Console.WriteLine($"Create: {directory}\\assets\\font", Directory.CreateDirectory($"{directory}\\assets\\font"));
-            Console.WriteLine($"Create: {directory}\\assets\\img", Directory.CreateDirectory($"{directory}\\assets\\img"));
+            ConsoleColor currentForengroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            Console.WriteLine("--Create Paths--");
+            Console.WriteLine($"Create: {directory}\\vendor", Directory.CreateDirectory($"{directory}\\vendor"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {directory}\\assets\\js", Directory.CreateDirectory($"{directory}\\assets\\js"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {directory}\\assets\\css", Directory.CreateDirectory($"{directory}\\assets\\css"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {directory}\\assets\\font", Directory.CreateDirectory($"{directory}\\assets\\font"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {directory}\\assets\\scss", Directory.CreateDirectory($"{directory}\\assets\\scss"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {directory}\\assets\\img", Directory.CreateDirectory($"{directory}\\assets\\img"), Console.ForegroundColor);
+
+            Console.ForegroundColor = currentForengroundColor;
         }
 
         private static void makeFiles(string directory) 
         {
-            //File.Create($"{currentDir}\\{projeto}\\index.html"); 
-            Console.WriteLine($"Create: {directory}\\assets\\js\\scripts.js", File.Create($"{directory}\\assets\\js\\scripts.js"));
-            Console.WriteLine($"Create: {directory}\\assets\\css\\styles.css", File.Create($"{directory}\\assets\\css\\styles.css"));
+            ConsoleColor currentForengroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            //File.Create($"{currentDir}\\{projeto}\\index.html");
+            Console.WriteLine("--Create Files--");
+            Console.WriteLine($"Create: {directory}\\assets\\js\\scripts.js", File.Create($"{directory}\\assets\\js\\scripts.js"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {directory}\\assets\\css\\styles.css", File.Create($"{directory}\\assets\\css\\styles.css"), Console.ForegroundColor);
+
+            Console.ForegroundColor = currentForengroundColor;
         }
 
         private static void makeIndexFile(string directory, string projectName)
@@ -154,7 +182,7 @@ namespace slothhtml.src
             sw.WriteLine($"\t<title>{projectName}</title>");
             sw.WriteLine("</head>");
             sw.WriteLine("<body>");
-            sw.WriteLine("<h1>Sloth HTML 1.0</h1>");
+            sw.WriteLine("<h1>Sloth HTML v1.0.0</h1>");
             /*
              
                 Desenvolver um script para iniciar projetos pré definidos como: login pages, dashboards, formulários e etc.
@@ -167,7 +195,12 @@ namespace slothhtml.src
             //Fecha o arquivo
             sw.Close();
 
+            ConsoleColor currentForengroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            
             Console.WriteLine($"Create: {directory}\\index.html");
+
+            Console.ForegroundColor = currentForengroundColor;
         }
 
 
