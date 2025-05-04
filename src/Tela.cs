@@ -18,7 +18,7 @@ namespace slothhtml.src
             LetraConsole.DrawString("Sloth html");
 
             Console.WriteLine("----------------------------------------------------------------------------");
-            Console.WriteLine("SlothHTML v0.1");
+            Console.WriteLine("SlothHTML v1.0.0");
             Console.WriteLine("Gerenciador de projetos HTML5.");
             Console.WriteLine("Dev: https://github.com/rafaelsouzars");
             Console.WriteLine("Repositório: https://github.com/rafaelsouzars/slothhtml");
