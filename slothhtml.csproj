@@ -4,10 +4,10 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>Rafael Souza</Authors>
-    <Description>O SlothHtml é uma ferramenta CLI para inicialização de projetos HTML5.</Description>
-    <PackageProjectUrl>https://github.com/rafaelsouzars/slothhtml.git</PackageProjectUrl>
+    <Description>Primeira versão do utilitário de git hooks.</Description>
+    <PackageProjectUrl>https://github.com/rafaelsouzars/ganchito.git</PackageProjectUrl>
     <Platforms>AnyCPU;x86;ARM64;ARM32;x64</Platforms>
-    <RepositoryUrl>https://github.com/rafaelsouzars/slothhtml.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/rafaelsouzars/ganchito.git</RepositoryUrl>
     <Company>https://github.com/rafaelsouzars/</Company>
   </PropertyGroup>
 
