@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Authors>Rafael Souza</Authors>
     <Description>Primeira versão do utilitário de git hooks.</Description>
     <PackageProjectUrl>https://github.com/rafaelsouzars/ganchito.git</PackageProjectUrl>
