@@ -10,21 +10,21 @@ using System.Text.Json;
 
 namespace slothhtml.src
 {
-    class Procedimentos
+    public class Procedimentos
     {       
         
-        public static void Init(string projectName)
-        {            
+        public static void CreateHtmlProject(string projectName)
+        {
+            ConsoleColor currentForegroundColor = Console.ForegroundColor;
 
             try
             {
-
                 string projectDirectory;
 
                 if (projectName == null)
                 {
                     projectDirectory = $"{Directory.GetCurrentDirectory()}";
-                    projectName = "meu-projeto";
+                    projectName = "my-project";
                 }
                 else
                 {
@@ -39,25 +39,47 @@ namespace slothhtml.src
 
                 //Prepara o arquivo para escrita
                 Procedimentos.makeIndexFile(projectDirectory, projectName);
-
-                ConsoleColor currentForengroundColor = Console.ForegroundColor;
+                
                 Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.WriteLine($"O projeto \'{projectName}\' foi criado com sucesso em {projectDirectory}");
 
-                Console.ForegroundColor = currentForengroundColor;
+                Console.ForegroundColor = currentForegroundColor;
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
                 Console.WriteLine("Seu projeto foi criado com sucesso. Mãos a obra, DEV.");
             }
-
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = currentForegroundColor;
+                Console.WriteLine("Exception: " + ex.Message);
+            }
             
+        }
+
+        public static void CreateBrowserExtensionProject(string projectName = "my-extension") 
+        {
+
+            ConsoleColor currentForegroundColor = Console.ForegroundColor;
+
+            try 
+            {
+                string projectDirectory = $"{Directory.GetCurrentDirectory()}\\{projectName}";
+
+                Procedimentos.MakeExtensionProject(projectDirectory, projectName);
+
+                Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.WriteLine($"O projeto \'{projectName}\' foi criado com sucesso em {projectDirectory}");
+
+                Console.ForegroundColor = currentForegroundColor;
+
+                Console.WriteLine("Seu projeto foi criado com sucesso. Mãos a obra, DEV.");
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = currentForegroundColor;
+                Console.WriteLine("Exception: " + ex.Message);
+            }
         }
 
         public static async Task LibsSearch(string query)
@@ -118,10 +140,7 @@ namespace slothhtml.src
             catch (Exception e) 
             {
                 errorMessage(e);
-            }
-            
-            
-                        
+            }                       
             
         }
 
@@ -138,12 +157,130 @@ namespace slothhtml.src
             //Arquivos.InserirBiblioteca("index","lib");
         }
 
-        private static void makeDirectorys(string directory) 
-        {
-            ConsoleColor currentForengroundColor = Console.ForegroundColor;
+        private static void MakeExtensionProject(string projectPath, string projectName) 
+        {            
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            Console.WriteLine("--Create Paths--");
+            Console.WriteLine("-- Create Extension Project Paths --");
+            Console.WriteLine($"Create: {projectPath}\\popup", Directory.CreateDirectory($"{projectPath}\\popup"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {projectPath}\\assets\\js", Directory.CreateDirectory($"{projectPath}\\assets\\js"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {projectPath}\\assets\\css", Directory.CreateDirectory($"{projectPath}\\assets\\css"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {projectPath}\\assets\\font", Directory.CreateDirectory($"{projectPath}\\assets\\font"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {projectPath}\\assets\\scss", Directory.CreateDirectory($"{projectPath}\\assets\\scss"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {projectPath}\\assets\\img", Directory.CreateDirectory($"{projectPath}\\assets\\img"), Console.ForegroundColor);
+
+            Console.WriteLine("-- Create Extension Project Files --");
+            //Console.WriteLine($"Create: {projectPath}\\manifest.json", File.Create($"{projectPath}\\manifest.json"), Console.ForegroundColor);
+            //Console.WriteLine($"Create: {projectPath}\\service-worker.js", File.Create($"{projectPath}\\service-worker.js"), Console.ForegroundColor);
+            //Console.WriteLine($"Create: {projectPath}\\popup\\popup.html", File.Create($"{projectPath}\\popup\\popup.html"), Console.ForegroundColor);
+            //Console.WriteLine($"Create: {projectPath}\\popup\\popup.js", File.Create($"{projectPath}\\popup\\popup.js"), Console.ForegroundColor);
+            //Console.WriteLine($"Create: {projectPath}\\popup\\popup.css", File.Create($"{projectPath}\\popup\\popup.css"), Console.ForegroundColor);
+
+
+            // Cria e escreve o código no arquivo do popup.html
+            StreamWriter popupFile = new StreamWriter($"{projectPath}\\popup\\popup.html");
+
+            popupFile.WriteLine("<!DOCTYPE html>");
+            popupFile.WriteLine("<html lang=\"pt-br\">");
+            popupFile.WriteLine("<head>");
+            popupFile.WriteLine("\t<meta charset=\"utf-8\">");
+            popupFile.WriteLine("\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+            popupFile.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
+            popupFile.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
+            popupFile.WriteLine("\t<link href=\"popup.css\" rel=\"stylesheet\"type=\"text/css\">");
+            popupFile.WriteLine($"\t<title>{projectName}</title>");
+            popupFile.WriteLine("</head>");
+            popupFile.WriteLine("<body>");
+            popupFile.WriteLine("<h1>Sloth HTML - Browser Extension Project</h1>");
+
+            popupFile.WriteLine("</body>");
+            popupFile.WriteLine("\t<script src=\"popup.js\"></script>");
+            popupFile.WriteLine("</html>");
+
+            //Fecha o arquivo popup.html
+            popupFile.Close();            
+            Console.WriteLine($"Create: {projectPath}\\popup\\popup.html");
+
+            // Cria e escreve o código no arquivo popup.css
+            StreamWriter popupCssFile = new($"{projectPath}\\popup\\popup.css");
+
+            popupCssFile.WriteLine(@"\* popup.css *\");
+            popupCssFile.WriteLine("\n* {");
+            popupCssFile.WriteLine("\tmargin: 0px;");
+            popupCssFile.WriteLine("\tpadding: 0px;");
+            popupCssFile.WriteLine("\tbox-sizing: border-box;");
+            popupCssFile.WriteLine("}\n");
+            popupCssFile.WriteLine("html, body {");
+            popupCssFile.WriteLine("\twidth: 300px;");
+            popupCssFile.WriteLine("\theight: 500px;");
+            popupCssFile.WriteLine("\tbox-sizing: border-box;");
+            popupCssFile.WriteLine("}");
+
+            // Fecha o arquivo popup.css
+            popupCssFile.Close();
+            Console.WriteLine($"Create: {projectPath}\\popup\\popup.css");
+
+            // Cria e escreve código no arquivo popup.js
+            StreamWriter popupJsFile = new($"{projectPath}\\popup\\popup.js");
+
+            popupJsFile.WriteLine(@"/* popup.js */");
+            popupJsFile.Write("\n");
+            popupJsFile.WriteLine(@"document.addEventListener('DOMContentLoaded', async () => {");
+            popupJsFile.Write("\n");
+            popupJsFile.WriteLine(@"})");
+
+            // Fecha arquivo popup.js
+            popupJsFile.Close();            
+            Console.WriteLine($"Create: {projectPath}\\popup\\popup.js");
+
+            // Crie e escreve o código no arquivo manifest.json
+            StreamWriter manifestFile = new($"{projectPath}\\manifest.json");
+
+            manifestFile.WriteLine("{");
+            manifestFile.WriteLine("\t\"manifest_version\": 3,");
+            manifestFile.WriteLine($"\t\"name\": \"{projectName}\",");
+            manifestFile.WriteLine("\t\"version\": \"0.0.0\",");
+            manifestFile.WriteLine("\t\"description\": \"\",");
+            manifestFile.WriteLine("\t\"icons\": {},");
+            manifestFile.WriteLine("\t\"action\": {");
+            manifestFile.WriteLine($"\t\t\"default_title\": \"{projectName}\"");
+            manifestFile.WriteLine("\t\t\"default_popup\": \"popup/popup.html\"");
+            manifestFile.WriteLine("\t\t\"default_icon\": {}");
+            manifestFile.WriteLine("\t},");
+            manifestFile.WriteLine("\t\"background\": {");
+            manifestFile.WriteLine("\t\t\"service_worker\": \"service-worker.js\"");
+            manifestFile.WriteLine("\t},");
+            manifestFile.WriteLine("\t\"permissions\": []");
+            manifestFile.WriteLine("\t\"host_permissions\": [");
+            manifestFile.WriteLine("\t\t\"http://*/*\"");
+            manifestFile.WriteLine("\t\t\"https://*/*\"");
+            manifestFile.WriteLine("\t]");
+            manifestFile.WriteLine("}");
+
+            // Fecha arquivo manifest.json
+            manifestFile.Close();
+            Console.WriteLine($"Create: {projectPath}\\manifest.json");
+
+            // Cria e escreve o código no arquivo service-worker.js
+            StreamWriter serviceWorkerFile = new($"{projectPath}\\service-worker.js");
+
+            serviceWorkerFile.WriteLine(@"/* service-worker.js */");
+            serviceWorkerFile.Write("\n");
+            serviceWorkerFile.WriteLine("chrome.runtime.onInstalled.addListener(() => {");
+            serviceWorkerFile.WriteLine("\tconsole.log(\'Extensão instalada. Service Worker em ação!\')");
+            serviceWorkerFile.WriteLine("})");
+
+            // Fecha arquivo service-worker.js
+            serviceWorkerFile.Close();
+
+        }
+
+        private static void makeDirectorys(string directory) 
+        {
+            ConsoleColor currentForegroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            Console.WriteLine("-- Create HTML Project Paths --");
             Console.WriteLine($"Create: {directory}\\vendor", Directory.CreateDirectory($"{directory}\\vendor"), Console.ForegroundColor);
             Console.WriteLine($"Create: {directory}\\assets\\js", Directory.CreateDirectory($"{directory}\\assets\\js"), Console.ForegroundColor);
             Console.WriteLine($"Create: {directory}\\assets\\css", Directory.CreateDirectory($"{directory}\\assets\\css"), Console.ForegroundColor);
@@ -151,12 +288,12 @@ namespace slothhtml.src
             Console.WriteLine($"Create: {directory}\\assets\\scss", Directory.CreateDirectory($"{directory}\\assets\\scss"), Console.ForegroundColor);
             Console.WriteLine($"Create: {directory}\\assets\\img", Directory.CreateDirectory($"{directory}\\assets\\img"), Console.ForegroundColor);
 
-            Console.ForegroundColor = currentForengroundColor;
+            Console.ForegroundColor = currentForegroundColor;
         }
 
         private static void makeFiles(string directory) 
         {
-            ConsoleColor currentForengroundColor = Console.ForegroundColor;
+            ConsoleColor currentForegroundColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             //File.Create($"{currentDir}\\{projeto}\\index.html");
@@ -164,7 +301,7 @@ namespace slothhtml.src
             Console.WriteLine($"Create: {directory}\\assets\\js\\scripts.js", File.Create($"{directory}\\assets\\js\\scripts.js"), Console.ForegroundColor);
             Console.WriteLine($"Create: {directory}\\assets\\css\\styles.css", File.Create($"{directory}\\assets\\css\\styles.css"), Console.ForegroundColor);
 
-            Console.ForegroundColor = currentForengroundColor;
+            Console.ForegroundColor = currentForegroundColor;
         }
 
         private static void makeIndexFile(string directory, string projectName)
