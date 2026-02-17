@@ -18,36 +18,42 @@ namespace slothhtml.src.Commands
                 );
 
             AddFlag(
+                "-w",
+                "--webpage",
+                "Create webpage. Ex: slothhtml create [-w or --webpage] [<project_name> or null]"
+                );
+
+            AddFlag(
                 "-e",
                 "--extension",
-                "Create browser extension."
+                "Create browser extension. Ex: slothhtml create [-e or --extension] [<project_name> or null]"
                 );
 
         }
 
         public override void Run(ArgsMapper argsMapper)
         {
-            base.Run(argsMapper);
+            //base.Run(argsMapper);
 
             try
             {
                 MappedLineTester(argsMapper, "arg1", () => {
-                    //Console.WriteLine("Primeiro argumento: {0}", argsMapper.GetArgs("arg1"));
-                    Procedimentos.CreateHtmlProject(null);
+                    Help();
                 });
 
-                MappedLineTester(argsMapper, "arg1 arg2", () => {
-                    //Console.WriteLine("Primeiro argumento: {0}", argsMapper.GetArgs("arg1"));
+                MappedLineTester(argsMapper, "arg1 flag1", "flag1=-w", () => {                    
+                    Procedimentos.CreateHtmlProject();
+                });
+
+                MappedLineTester(argsMapper, "arg1 flag1 arg2", "flag1=-w", () => {                    
                     Procedimentos.CreateHtmlProject(argsMapper.GetArgs("arg2"));
                 });
 
-                MappedLineTester(argsMapper, "arg1 flag1", "flag1=-e", () => {
-                    //Console.WriteLine("Primeiro argumento: {0}", argsMapper.GetArgs("arg1"));
+                MappedLineTester(argsMapper, "arg1 flag1", "flag1=-e", () => {                    
                     Procedimentos.CreateBrowserExtensionProject();
                 });
 
-                MappedLineTester(argsMapper, "arg1 flag1 arg2", "flag1=-e",() => {
-                    //Console.WriteLine("Primeiro argumento: {0}", argsMapper.GetArgs("arg1"));
+                MappedLineTester(argsMapper, "arg1 flag1 arg2", "flag1=-e",() => {                    
                     Procedimentos.CreateBrowserExtensionProject(argsMapper.GetArgs("arg2"));
                 });
 
