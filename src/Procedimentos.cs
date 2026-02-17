@@ -298,7 +298,7 @@ namespace slothhtml.src
             indexHtmlFile.WriteLine("\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
             indexHtmlFile.WriteLine("\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edger\">");
             indexHtmlFile.WriteLine("\t<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\">");
-            indexHtmlFile.WriteLine("\t<link href=\"assets/css/styles.css\" rel=\"stylesheet\"type=\"text/css\">");
+            indexHtmlFile.WriteLine("\t<link href=\"assets/css/style.css\" rel=\"stylesheet\"type=\"text/css\">");
             indexHtmlFile.WriteLine($"\t<title>{projectName}</title>");
             indexHtmlFile.WriteLine("</head>");
             indexHtmlFile.WriteLine("<body>");
