@@ -289,7 +289,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve o código no arquivo index.html
-            StreamWriter indexHtmlFile = new StreamWriter($"{projectPath}\\index.html");
+            StreamWriter indexHtmlFile = new($"{projectPath}\\index.html");
 
             indexHtmlFile.WriteLine("<!DOCTYPE html>");
             indexHtmlFile.WriteLine("<html lang=\"pt-br\">");
@@ -312,9 +312,22 @@ namespace slothhtml.src
             indexHtmlFile.WriteLine("\t<script src=\"assets/js/script.js\"></script>");
             indexHtmlFile.WriteLine("</html>");
 
-            //Fecha o arquivo
+            //Fecha o arquivo index.html
             indexHtmlFile.Close();
             Console.WriteLine($"Create: {projectPath}\\index.html");
+
+
+            // Cria e escreve o arquivo server.ps1
+            StreamWriter serverPsFile = new($"{projectPath}\\server.ps1");
+
+            serverPsFile.WriteLine("# \"Para especificar uma pasta use -t <path>\"");
+            serverPsFile.WriteLine("\"Iniciar PHP Http server...\"");
+            serverPsFile.WriteLine("php -S localhost:8000");
+
+            // Fecha o aqruivo server.ps1
+            serverPsFile.Close();
+            Console.WriteLine($"Create: {projectPath}\\server.ps1");
+
 
             // Cria e escreve código no arquivo script.js
             StreamWriter scriptJsFile = new($"{projectPath}\\assets\\js\\script.js");
