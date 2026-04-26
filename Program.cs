@@ -5,7 +5,7 @@ using slothhtml.src.Commands;
 var app = new Executer();
 
 // Ativa o letreito
-app.ScreenAbout(true);
+app.ScreenAbout(false);
 
 // Insere as informações do app
 app.InsertAppData(new
@@ -20,6 +20,7 @@ app.InsertAppData(new
 app.AddCommand("create", "Inicia um projeto HTML.", new CreateActionCommand());
 app.AddCommand("search", "Pesquisar bibliotecas JS no repositório cdnjs.", new SearchActionCommand());
 app.AddCommand("lib", "Requisita uma biblioteca JS do repositório do cdnjs.", new LibActionCommand());
+app.AddCommand("info", "Informações sobre códigos.", new InfoActionCommand());
 
 
 // Recebe o array de argumentos do app
