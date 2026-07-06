@@ -345,7 +345,7 @@ namespace slothhtml.src
             // Cria e escreve o código no arquivo style.css
             StreamWriter styleCssFile = new($"{projectPath}\\assets\\css\\style.css");
 
-            styleCssFile.WriteLine(@"\* style.css *\");
+            styleCssFile.WriteLine(@"/* style.css */");
             styleCssFile.WriteLine("\n* {");
             styleCssFile.WriteLine("\tmargin: 0px;");
             styleCssFile.WriteLine("\tpadding: 0px;");
