@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33927.289
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "slothhtml", "slothhtml.csproj", "{E6003C74-1801-4CA9-A7D7-A211B0034FA2}"
 EndProject
