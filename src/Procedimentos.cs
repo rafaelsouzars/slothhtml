@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
@@ -16,7 +17,7 @@ namespace slothhtml.src
 
             try
             {
-                string projectPath = $"{Directory.GetCurrentDirectory()}\\{projectName}";                
+                string projectPath = Path.Combine(Directory.GetCurrentDirectory(), projectName);               
 
                 // Cria a estrutura do projeto
                 Procedimentos.MakeHtmlProject(projectPath, projectName);
@@ -44,7 +45,7 @@ namespace slothhtml.src
 
             try 
             {
-                string projectDirectory = $"{Directory.GetCurrentDirectory()}\\{projectName}";
+                string projectDirectory = Path.Combine(Directory.GetCurrentDirectory(), projectName);
 
                 Procedimentos.MakeExtensionProject(projectDirectory, projectName);
 
@@ -138,15 +139,15 @@ namespace slothhtml.src
             //Arquivos.InserirBiblioteca("index","lib");
         }
 
-        private static void MakeExtensionProject(string projectPath, string projectName) 
-        {            
+        private static void MakeExtensionProject(string projectPath, string projectName)
+        {
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.WriteLine("-- Create Extension Project Paths --");
-            Console.WriteLine($"Create: {projectPath}\\popup", Directory.CreateDirectory($"{projectPath}\\popup"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\scripts", Directory.CreateDirectory($"{projectPath}\\scripts"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\images", Directory.CreateDirectory($"{projectPath}\\images"), Console.ForegroundColor);            
-            
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "popup")}", Directory.CreateDirectory(Path.Combine(projectPath, "popup")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "scripts")}", Directory.CreateDirectory(Path.Combine(projectPath, "scripts")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "images")}", Directory.CreateDirectory(Path.Combine(projectPath, "images")), Console.ForegroundColor);
+
 
             Console.WriteLine("-- Create Extension Project Files --");
             //Console.WriteLine($"Create: {projectPath}\\manifest.json", File.Create($"{projectPath}\\manifest.json"), Console.ForegroundColor);
@@ -157,7 +158,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve o código no arquivo do popup.html
-            StreamWriter popupFile = new StreamWriter($"{projectPath}\\popup\\popup.html");
+            StreamWriter popupFile = new StreamWriter(Path.Combine(projectPath, "popup", "popup.html"));
 
             popupFile.WriteLine("<!DOCTYPE html>");
             popupFile.WriteLine("<html lang=\"pt-br\">");
@@ -177,12 +178,12 @@ namespace slothhtml.src
             popupFile.WriteLine("</html>");
 
             //Fecha o arquivo popup.html
-            popupFile.Close();            
-            Console.WriteLine($"Create: {projectPath}\\popup\\popup.html");
+            popupFile.Close();
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "popup", "popup.html")}");
 
 
             // Cria e escreve o código no arquivo popup.css
-            StreamWriter popupCssFile = new($"{projectPath}\\popup\\popup.css");
+            StreamWriter popupCssFile = new(Path.Combine(projectPath, "popup", "popup.css"));
 
             popupCssFile.WriteLine(@"\* popup.css *\");
             popupCssFile.WriteLine("\n* {");
@@ -198,11 +199,11 @@ namespace slothhtml.src
 
             // Fecha o arquivo popup.css
             popupCssFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\popup\\popup.css");
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"popup","popup.css")}");
 
 
             // Cria e escreve código no arquivo popup.js
-            StreamWriter popupJsFile = new($"{projectPath}\\popup\\popup.js");
+            StreamWriter popupJsFile = new(Path.Combine(projectPath,"popup","popup.js"));
 
             popupJsFile.WriteLine(@"/* popup.js */");
             popupJsFile.Write("\n");
@@ -212,21 +213,21 @@ namespace slothhtml.src
 
             // Fecha arquivo popup.js
             popupJsFile.Close();            
-            Console.WriteLine($"Create: {projectPath}\\popup\\popup.js");
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"popup","popup.js")}");
 
 
             // Cria e escreve código no arquivo popup.js
-            StreamWriter contentJsFile = new($"{projectPath}\\scripts\\content.js");
+            StreamWriter contentJsFile = new(Path.Combine(projectPath,"scripts","content.js"));
 
             contentJsFile.WriteLine(@"/* content.js */");            
 
             // Fecha arquivo popup.js
             contentJsFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\scripts\\content.js");
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "scripts", "content.js")}");
 
 
             // Crie e escreve o código no arquivo manifest.json
-            StreamWriter manifestFile = new($"{projectPath}\\manifest.json");
+            StreamWriter manifestFile = new(Path.Combine(projectPath,"manifest.json"));
 
             manifestFile.WriteLine("{");
             manifestFile.WriteLine("\t\"manifest_version\": 3,");
@@ -251,10 +252,10 @@ namespace slothhtml.src
 
             // Fecha arquivo manifest.json
             manifestFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\manifest.json");
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "manifest.json")}");
 
             // Cria e escreve o código no arquivo background.js
-            StreamWriter serviceWorkerFile = new($"{projectPath}\\background.js");
+            StreamWriter serviceWorkerFile = new(Path.Combine(projectPath,"background.js"));
 
             serviceWorkerFile.WriteLine(@"/* background.js */");
             serviceWorkerFile.Write("\n");
@@ -264,7 +265,7 @@ namespace slothhtml.src
 
             // Fecha arquivo background.js
             serviceWorkerFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\background.js");
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "background.js")}");
         }
 
         private static void MakeHtmlProject(string projectPath, string projectName) 
@@ -273,12 +274,12 @@ namespace slothhtml.src
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.WriteLine("-- Create HTML Project Paths --");
-            Console.WriteLine($"Create: {projectPath}\\vendor", Directory.CreateDirectory($"{projectPath}\\vendor"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\assets\\js", Directory.CreateDirectory($"{projectPath}\\assets\\js"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\assets\\css", Directory.CreateDirectory($"{projectPath}\\assets\\css"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\assets\\font", Directory.CreateDirectory($"{projectPath}\\assets\\font"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\assets\\scss", Directory.CreateDirectory($"{projectPath}\\assets\\scss"), Console.ForegroundColor);
-            Console.WriteLine($"Create: {projectPath}\\assets\\img", Directory.CreateDirectory($"{projectPath}\\assets\\img"), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"vendor")}", Directory.CreateDirectory(Path.Combine(projectPath,"vendor")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"assets","js")}", Directory.CreateDirectory(Path.Combine(projectPath,"assets","js")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"assets","css")}", Directory.CreateDirectory(Path.Combine(projectPath,"assets","css")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"assets","font")}", Directory.CreateDirectory(Path.Combine(projectPath,"assets","font")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"assets","scss")}", Directory.CreateDirectory(Path.Combine(projectPath,"assets","scss")), Console.ForegroundColor);
+            Console.WriteLine($"Create: {Path.Combine(projectPath,"assets","img")}", Directory.CreateDirectory(Path.Combine(projectPath,"assets","img")), Console.ForegroundColor);
 
             Console.WriteLine("--Create Files--");
             //Console.WriteLine($"Create: {projectPath}\\assets\\js\\script.js", File.Create($"{projectPath}\\assets\\js\\script.js"), Console.ForegroundColor);
@@ -286,7 +287,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve o código no arquivo index.html
-            StreamWriter indexHtmlFile = new($"{projectPath}\\index.html");
+            StreamWriter indexHtmlFile = new(Path.Combine(projectPath,"index.html"));
 
             indexHtmlFile.WriteLine("<!DOCTYPE html>");
             indexHtmlFile.WriteLine("<html lang=\"pt-br\">");
@@ -311,23 +312,11 @@ namespace slothhtml.src
 
             //Fecha o arquivo index.html
             indexHtmlFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\index.html");
-
-
-            // Cria e escreve o arquivo server.ps1
-            StreamWriter serverPsFile = new($"{projectPath}\\server.ps1");
-
-            serverPsFile.WriteLine("# \"Para especificar uma pasta use -t <path>\"");
-            serverPsFile.WriteLine("\"Iniciar PHP Http server...\"");
-            serverPsFile.WriteLine("php -S localhost:8000");
-
-            // Fecha o aqruivo server.ps1
-            serverPsFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\server.ps1");
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "index.html")}");
 
 
             // Cria e escreve código no arquivo script.js
-            StreamWriter scriptJsFile = new($"{projectPath}\\assets\\js\\script.js");
+            StreamWriter scriptJsFile = new(Path.Combine(projectPath,"assets","js","script.js"));
 
             scriptJsFile.WriteLine(@"/* script.js */");
             scriptJsFile.Write("\n");
@@ -337,10 +326,10 @@ namespace slothhtml.src
 
             // Fecha arquivo script.js
             scriptJsFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\assets\\js\\scripts.js");
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "assets", "js", "script.js")}");
 
             // Cria e escreve o código no arquivo style.css
-            StreamWriter styleCssFile = new($"{projectPath}\\assets\\css\\style.css");
+            StreamWriter styleCssFile = new(Path.Combine(projectPath,"assets","css","style.css"));
 
             styleCssFile.WriteLine(@"/* style.css */");
             styleCssFile.WriteLine("\n* {");
@@ -351,7 +340,35 @@ namespace slothhtml.src
 
             // Fecha o arquivo popup.css
             styleCssFile.Close();
-            Console.WriteLine($"Create: {projectPath}\\assets\\css\\style.css");            
+            Console.WriteLine($"Create: {Path.Combine(projectPath, "assets", "css", "style.css")}");
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // Cria e escreve o arquivo server.ps1
+                StreamWriter serverPsFile = new(Path.Combine(projectPath, "server.ps1"));
+
+                serverPsFile.WriteLine("# \"Para especificar uma pasta use -t <path>\"");
+                serverPsFile.WriteLine("\"Iniciar PHP Http server...\"");
+                serverPsFile.WriteLine("php -S localhost:8000");
+
+                // Fecha o aqruivo server.ps1
+                serverPsFile.Close();
+                Console.WriteLine($"Create: {Path.Combine(projectPath, "server.ps1")}");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) 
+            {
+                // Cria e escreve o arquivo server.sh
+                StreamWriter serverPsFile = new(Path.Combine(projectPath, "server.sh"));
+
+                serverPsFile.WriteLine("# \"Para especificar uma pasta use -t <path>\"");
+                serverPsFile.WriteLine("\"Iniciar PHP Http server...\"");
+                serverPsFile.WriteLine("php -S localhost:8000");
+
+                // Fecha o aqruivo server.sh
+                serverPsFile.Close();
+                Console.WriteLine($"Create: {Path.Combine(projectPath, "server.sh")}");
+            }
+
 
             Console.ForegroundColor = currentForegroundColor;
         }   
