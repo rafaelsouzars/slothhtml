@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text;
 
 namespace slothhtml.src
 {
@@ -158,7 +159,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve o código no arquivo do popup.html
-            StreamWriter popupFile = new StreamWriter(Path.Combine(projectPath, "popup", "popup.html"));
+            StreamWriter popupFile = new StreamWriter(Path.Combine(projectPath, "popup", "popup.html"), append: false, encoding: Encoding.UTF8);
 
             popupFile.WriteLine("<!DOCTYPE html>");
             popupFile.WriteLine("<html lang=\"pt-br\">");
@@ -183,7 +184,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve o código no arquivo popup.css
-            StreamWriter popupCssFile = new(Path.Combine(projectPath, "popup", "popup.css"));
+            StreamWriter popupCssFile = new(Path.Combine(projectPath, "popup", "popup.css"), append: false, encoding: Encoding.UTF8);
 
             popupCssFile.WriteLine(@"\* popup.css *\");
             popupCssFile.WriteLine("\n* {");
@@ -203,7 +204,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve código no arquivo popup.js
-            StreamWriter popupJsFile = new(Path.Combine(projectPath,"popup","popup.js"));
+            StreamWriter popupJsFile = new(Path.Combine(projectPath,"popup","popup.js"), append: false, encoding: Encoding.UTF8);
 
             popupJsFile.WriteLine(@"/* popup.js */");
             popupJsFile.Write("\n");
@@ -217,7 +218,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve código no arquivo popup.js
-            StreamWriter contentJsFile = new(Path.Combine(projectPath,"scripts","content.js"));
+            StreamWriter contentJsFile = new(Path.Combine(projectPath,"scripts","content.js"), append: false, encoding: Encoding.UTF8);
 
             contentJsFile.WriteLine(@"/* content.js */");            
 
@@ -227,7 +228,7 @@ namespace slothhtml.src
 
 
             // Crie e escreve o código no arquivo manifest.json
-            StreamWriter manifestFile = new(Path.Combine(projectPath,"manifest.json"));
+            StreamWriter manifestFile = new(Path.Combine(projectPath,"manifest.json"), append: false, encoding: Encoding.UTF8);
 
             manifestFile.WriteLine("{");
             manifestFile.WriteLine("\t\"manifest_version\": 3,");
@@ -255,7 +256,7 @@ namespace slothhtml.src
             Console.WriteLine($"Create: {Path.Combine(projectPath, "manifest.json")}");
 
             // Cria e escreve o código no arquivo background.js
-            StreamWriter serviceWorkerFile = new(Path.Combine(projectPath,"background.js"));
+            StreamWriter serviceWorkerFile = new(Path.Combine(projectPath,"background.js"), append: false, encoding: Encoding.UTF8);
 
             serviceWorkerFile.WriteLine(@"/* background.js */");
             serviceWorkerFile.Write("\n");
@@ -287,7 +288,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve o código no arquivo index.html
-            StreamWriter indexHtmlFile = new(Path.Combine(projectPath,"index.html"));
+            StreamWriter indexHtmlFile = new(Path.Combine(projectPath,"index.html"), append: false, encoding: Encoding.UTF8);
 
             indexHtmlFile.WriteLine("<!DOCTYPE html>");
             indexHtmlFile.WriteLine("<html lang=\"pt-br\">");
@@ -316,7 +317,7 @@ namespace slothhtml.src
 
 
             // Cria e escreve código no arquivo script.js
-            StreamWriter scriptJsFile = new(Path.Combine(projectPath,"assets","js","script.js"));
+            StreamWriter scriptJsFile = new(Path.Combine(projectPath,"assets","js","script.js"), append: false, encoding: Encoding.UTF8);
 
             scriptJsFile.WriteLine(@"/* script.js */");
             scriptJsFile.Write("\n");
@@ -345,7 +346,7 @@ namespace slothhtml.src
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Cria e escreve o arquivo server.ps1
-                StreamWriter serverPsFile = new(Path.Combine(projectPath, "server.ps1"));
+                StreamWriter serverPsFile = new(Path.Combine(projectPath, "server.ps1"), append: false, encoding: Encoding.UTF8);
 
                 serverPsFile.WriteLine("# \"Para especificar uma pasta use -t <path>\"");
                 serverPsFile.WriteLine("\"Iniciar PHP Http server...\"");
@@ -358,7 +359,7 @@ namespace slothhtml.src
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) 
             {
                 // Cria e escreve o arquivo server.sh
-                StreamWriter serverPsFile = new(Path.Combine(projectPath, "server.sh"));
+                StreamWriter serverPsFile = new(Path.Combine(projectPath, "server.sh"), append: false, encoding: Encoding.UTF8);
 
                 serverPsFile.WriteLine("# \"Para especificar uma pasta use -t <path>\"");
                 serverPsFile.WriteLine("\"Iniciar PHP Http server...\"");
